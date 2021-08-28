@@ -11,7 +11,7 @@ jobs:
       - name: setup git folder
         run: |
           git init
-          git remote add origin https://x-access-token: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@github.com/$GITHUB_REPOSITORY.git
+          git remote add origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
           git config --global user.name "Chandru"
           git config --global user.email "chandru89new@gmail.com"
           echo "setup git"
