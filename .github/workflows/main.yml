@@ -9,9 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          ref: 'master'
+          token: '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'
       - name: merge staging into master
         run: |
-          git checkout master
           git pull origin staging --rebase
           git push origin master
