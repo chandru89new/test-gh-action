@@ -1,0 +1,17 @@
+name: Merge into Master
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  merge-into-master:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: merge staging into master
+        run: |
+          git checkout master
+          git pull origin staging --rebase
+          git push origin master
