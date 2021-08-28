@@ -11,7 +11,7 @@ jobs:
       - name: update master branch
         run: |
           git init
-          git remote add origin https://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@github.com/chandru89new/test-gh-action.git
+          git remote add origin https://github.com/chandru89new/test-gh-action.git
           git pull origin master
           git pull origin staging --rebase
-          git push origin master
+          git push https://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@github.com/chandru89new/test-gh-action.git master
