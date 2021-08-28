@@ -8,8 +8,16 @@ jobs:
   merge-into-master:
     runs-on: ubuntu-latest
     steps:
-      - name: update master branch
+      - name: setup git folder
         run: |
           git init
           git remote add origin https://x-access-token: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@github.com/$GITHUB_REPOSITORY.git
-          git pull origin master
+          git config --global user.name "Chandru"
+          git config --global user.email "chandru89new@gmail.com"
+      - name: rebase staging into master
+        run: |
+          git checkout master
+          git pull origin staging --rebase
+      - name: push to master
+        run: |
+          git push origin master
