@@ -14,10 +14,13 @@ jobs:
           git remote add origin https://x-access-token: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@github.com/$GITHUB_REPOSITORY.git
           git config --global user.name "Chandru"
           git config --global user.email "chandru89new@gmail.com"
+          echo "setup git"
       - name: rebase staging into master
         run: |
           git checkout -b master
           git pull origin staging --rebase
+          echo "rebased master"
       - name: push to master
         run: |
           git push origin master
+          echo "done"
