@@ -16,7 +16,7 @@ jobs:
           git config --global user.email "chandru89new@gmail.com"
       - name: rebase staging into master
         run: |
-          git checkout master
+          git checkout -b master
           git pull origin staging --rebase
       - name: push to master
         run: |
