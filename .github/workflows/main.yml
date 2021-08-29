@@ -4,7 +4,7 @@ on:
     branches:
       - staging
 jobs:
-  report:
+  merge-into-master:
     runs-on: ubuntu-latest
     steps:
       - name: Pull from origin
@@ -12,6 +12,9 @@ jobs:
         with:
           ref: 'master'
           fetch-depth: 0
+      - name: Switch from detached head
+        run: |
+          git switch
       - name: Setup config
         run: |
           git config --global user.name 'Chandru'
