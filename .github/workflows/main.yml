@@ -3,24 +3,41 @@ on:
   push:
     branches:
       - staging
-
 jobs:
-  merge-into-master:
+  report:
     runs-on: ubuntu-latest
     steps:
-      - name: setup git folder
+      - name: Pull from origin
+        uses: actions/checkout@v1
+        with:
+          ref: 'master'
+          fetch_depth: 0
+      - name: Setup config
         run: |
-          git init
-          git remote set-url origin https://chandru89new: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@github.com/$GITHUB_REPOSITORY.git
-          git config --global user.name "Chandru"
-          git config --global user.email "chandru89new@gmail.com"
-          echo "setup git"
-      - name: rebase staging into master
+          git config --global user.name 'Chandru'
+          git config --global user.email 'chandru89new@gmail.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+      - name: rebase and push    
         run: |
-          git checkout -b master
           git pull origin staging --rebase
-          echo "rebased master"
-      - name: push to master
-        run: |
-          git push origin master
-          echo "done"
+          git push
+# jobs:
+#   merge-into-master:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: setup git folder
+#         run: |
+#           git init
+#           git remote set-url origin https://chandru89new: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@github.com/$GITHUB_REPOSITORY.git
+#           git config --global user.name "Chandru"
+#           git config --global user.email "chandru89new@gmail.com"
+#           echo "setup git"
+#       - name: rebase staging into master
+#         run: |
+#           git checkout -b master
+#           git pull origin staging --rebase
+#           echo "rebased master"
+#       - name: push to master
+#         run: |
+#           git push origin master
+#           echo "done"
